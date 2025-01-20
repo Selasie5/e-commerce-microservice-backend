@@ -1,11 +1,11 @@
 import express from "express";
-import  {register, login, getProfile} from "../controller/userController";
-import { authenticate } from "../../../common/middleware/authMiddleware";
-//initializing the router
+import { register, login, getProfile } from "../controller/userController";
+import { authenticateToken } from "../../../common/middleware/authMiddleware";
+
 const router = express.Router();
 
-//Define routes
-router.post("/register", register)
-router.post("/login",login)
+router.post("/register", register);
+router.post("/login", login);
+router.get("/profile", authenticateToken, getProfile);
 
-export default  router;
+export default router;
