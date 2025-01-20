@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response , NextFunction} from "express";
 import prisma from "../../../common/db.js";
 import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
@@ -53,7 +53,7 @@ export const login = async(req:Request, res:Response):Promise<void>=>
     }
 }
 
-export const getProfile =async(req: CustomRequest, res:Response):Promise<void> =>{
+export const getProfile =async(req: CustomRequest, res:Response,next: NextFunction):Promise<void> =>{
  const userId = req.userId;
  try {
     const user = await prisma.user.findUnique({
