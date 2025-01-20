@@ -1,6 +1,6 @@
 import express from "express";
 import { register, login, getProfile } from "../controller/userController";
-import { authenticateToken } from "../../../common/middleware/authMiddleware";
+import { authenticateToken } from "../../../api-gateway/middleware/authMiddleware";
 
 const router = express.Router();
 
